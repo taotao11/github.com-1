@@ -1,76 +1,124 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>下拉框</title>
+		<meta charset="utf-8" />
+		<title>仿京东注册页面</title>
+		<!--导入重置样式表-->
+		<link rel="stylesheet" href="rest.css" />
+		<!--导入页面样式表-->
+		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-		<style>
-			*{margin: 0; padding: 0;}
-			ul ,li{list-style: none;}
-			.topBox{
-				margin: 0  auto;
-				width:300px;
-				height:80px;
-				line-height: 80px;
-				text-align: center;
-				background:olivedrab;
-				transition: all 3s;
-				-webkit-transition:all 3s;
-			}
-			.showBox{
-				position:absolute;
-				display: none;
-				left: 0;
-				top: 0;
-				/*过渡效果*/
-				
-			}
-			.showBox li{
-				width:300px;
-				height:80px;
-				background: pink;
-				line-height: 80px;
-				text-align: center;
-			
-			}
-		</style>
-		<div class="topBox">点击下拉&nbsp;&nbsp;<span class="title_show"></span></div>
-		<ul class="showBox">
-			<li>item1</li>
-			<li>item1</li>
-			<li>item1</li>
-		</ul>
-		<script>
-			var topBox = dom("topBox");
-			var showBox = dom("showBox");
-			var titleShow = dom("title_show");
-			var clickSum = 0;//点击总数
-			var clickSun = 1;
-			topBox.onclick = function(e){
-				clickSum++;
-				titleShow.innerHTML = "您点击了" + clickSum +"次";
-				if(clickSun ==1 ){
-					//获取点击盒子的left
-					var showLeft = this.offsetLeft;
-					//获取点击盒子的top
-					var showTop = this.offsetTop;
-					//设置显示盒子的属性
-					showBox.style.left = showLeft + 'px';
-					showBox.style.top = showTop + topBox.offsetHeight +'px';
-					showBox.style.display = 'block';
-					clickSun *= -1; 
-				}else{
-					//再次点击隐藏
-					showBox.style.display = 'none';
-					clickSun *= -1; 
-				}
-			};
-			//定义获取节点的方法
-			function dom(dom){
-				return document.getElementsByClassName(dom)[0];
-			}
-			
-		</script>
+		<!--头部内容-->
+		<header class="header clear">
+			<!--logo-->
+			<div class="imgD mt15 clear ">
+				<a href="#" class="img-bg fl mt15 ml50"></a>
+				<h1 class="fl ml20 mt30 fb">欢迎注册</h1>
+			</div>
+			<!--登录-->
+			<div class="lodingD fr mr100 mt70">
+				<span>已有账号？</span><a href="#">请登录</a>
+			</div>
+		</header>
+		<!--头部与内容分割线-->
+		<aside class="linD"></aside>
+		<!--右边固定定位盒子-->
+		<a id="right_box" href="#"></a>
+		<!--注册内容-->
+		<section class="section mt70">
+			<div class="Szuche  clear">
+				<div class="zc fl ml200">
+					<!--注册表单-->
+					<div class="inputD pr">
+						<input class="ipt pl100"type="text" placeholder="您的帐户名和登陆名" maxlength="20"/>
+						<sapn class="iptS pa tc">用&nbsp;户&nbsp;名</sapn>
+						<i class="ipt-right pa"></i>
+						<span class="ipt-ms pa f13">
+							<i class="ipt-ms-bg mr5 vm"></i>
+							<span class="vm">支持中文、字母、数字、“-”“_”的组合，4-20个字符</span>
+						</span>
+					</div>
+					<div class="inputD pr mt30">
+						<input class="ipt pl100" type="password" placeholder="建议至少使用两种字符组合" maxlength="20"/>
+						<sapn class="iptS pa tc">设置密码</sapn>
+						<i class="ipt-right pa"></i>
+						<span class="ipt-ms pa f13">
+							<i class="ipt-ms-bg mr5 vm"></i>
+							<span class="vm">建议使用字母、数字和符号两种及以上的组合，6-20个字符</span>
+						</span>
+					</div>
+					<div class="inputD pr mt30">
+						<input class="ipt pl100" type="password" placeholder="再次输入密码" maxlength="20"/>
+						<sapn class="iptS pa tc">确认密码</sapn>
+						<i class="ipt-right pa"></i>
+						<span class="ipt-ms pa f13">
+							<i class="ipt-ms-bg mr5 vm"></i>
+							<span class="vm">请再次输入密码</span>
+						</span>
+					</div>
+					<div class="inputD pr mt30">
+						<input class="ipt pl100" type="text" placeholder="建议使用常用手机" maxlength="11"/>
+						<sapn class="iptS pa tc">
+							中国0086<a  href="javascript:void(0)"class="iptS_a" ></a>
+						</sapn>
+						<i class="ipt-right pa"></i>
+						<span class="ipt-ms pa f13">
+							<i class="ipt-ms-bg mr5 vm"></i>
+							<span class="vm">完成验证后，你可以用该手机登录和找回密码</span>
+						</span>
+					</div>
+					<div class="inputD pr mt30">
+						<input class="ipt pl100" type="text" placeholder="请输入验证码" maxlength="6"/>
+						<sapn class="iptS pa tc">验&nbsp;证&nbsp;码</sapn>
+						<sapn class="iptS_R pa tc"><i class="iptS-R-i">HTGVH9</i></sapn>
+						<span class="ipt-ms pa f13">
+							<i class="ipt-ms-bg mr5 vm"></i>
+							<span class="vm">看不清？点击图片更换验证码</span>
+						</span>
+					</div>
+					<div class="inputD pr mt30">
+						<input class="ipt pl100" type="text" placeholder="请输入手机验证码"/>
+						<sapn class="iptS pa tc ">手机验证码</sapn>
+						<sapn id="hqYZ"class="iptS_R pa tc ">获取验证码</sapn>
+					</div>
+					<div class="f13 mt30">
+						<input type="checkbox" class="ipt-C" checked />我以阅读已同意
+						<a href="#">《京东用户注册协议》</a>
+					</div>
+					<button class=" btnS mt30 f16">确认注册</button>
+				</div>
+				<!--个人注册与企业注册分割线-->
+				<div class="Sline fl ml100"></div>
+				<div class="otherzc fl ml100">
+					<div class="otherzc_B">
+						<a  href="#">
+							<i class="otherzc_B_i vm"></i>
+							<span class="ml10 vm">企业用户注册</sapn>
+						</a>
+					</div>
+					<div class="Oline mt30"></div>
+					<div class="otherzc_B mt30">
+						<a  href="#">
+							<i class="otherzc_B_iT vm"></i>
+							<span class="ml10 vm">INTERNATIONAL</sapn>
+						</a>
+					</div>
+					<div class="otherzc_B_ph mt50"></div>
+				</div>
+			</div>
+		</section>
+		<!--底部与内容分割线-->
+		<aside class="Aline mc mt50"></aside>
+		<footer class="footer mt30">
+			<!--底部链接-->
+			<a href="#" class="ml200 mr10">关于我们</a>|<a href="#" class="m10"> 联系我们</a>|<a href="#"class="m10"> 人才招聘</a>|
+			<a href="#" class="m10">商家入驻</a>|<a href="#" class="m10">广告服务</a>|<a href="#" class="m10"> 手机京东</a>|
+			<a href="#" class="m10">友情链接</a>|<a href="#" class="m10"> 销售联盟</a>|<a href="#" class="m10"> 京东社区</a>|
+			<a href="#" class="m10"> 京东公益</a>|<a href="#" class="m10"> English Site</a>|<br/>
+			<!--版权说明-->
+			<p class="Fem mc pt50"> Copyright©2004-2016  京东JD.com 版权所有<p>
+		</footer>
+		<script type="text/javascript" src="index.js" ></script><!--引入js文件-->	
 	</body>
 </html>
